@@ -95,6 +95,7 @@ function finalScore(inning, numInnings){
   }
   return score;
 }
+console.log(finalScore(inning, 9));
 
 
 
@@ -118,9 +119,17 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(funcInning,funcScore,num) {
+  let total = {
+    "Home":0,
+    "Away":0
+  }
+  for(let i = 1; i <= num;i++){
+    let score = funcScore(funcInning,1)
+    total.Home += score.Home;
+    total.Away += score.Away;
+    console.log(`Inning ${i} - Home${score.Home} Away:${score.Away}`)
+  }
+  return `Final Score - Home:${total.Home} Away:${total.Away}`
 }
-
-
+console.log(scoreboard(inning,finalScore,9));
