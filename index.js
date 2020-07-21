@@ -18,6 +18,9 @@ function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
 
+
+
+
 // ⭐️ Example Challenge END ⭐️
 
 
@@ -27,11 +30,14 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *        -counter1 is considered a higher order function
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ *        -counter1 - an outer function is being called by an inner function
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *        -counter1 - when reusing the counter in other locations.
+ *        -counter2 - This counter is simple and works - closure is not always needed.
 */
 
 // counter1 code
@@ -56,11 +62,12 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  points = Math.floor(Math.random() * 3);
+  return points;
 }
+
+
 
 /* Task 3: finalScore()
 
@@ -73,14 +80,23 @@ finalScore(inning, 9) might return:
   "Home": 11,
   "Away": 5,
 }
+*/
 
-*/ 
+function finalScore(inning, numInnings){
+  let score = {
+    Home: 0,
+    Away: 0
+  }
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+  for (i = 0; i < numInnings; i++) {
+    score.Home += inning();
+    score.Away += inning();
+    console.log(inning());
+  }
+  return score;
 }
+
+
 
 /* Task 4: 
 
